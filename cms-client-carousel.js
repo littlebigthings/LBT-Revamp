@@ -40,21 +40,13 @@ class CLIENTSLIDER {
             slidesToScroll: 1,
             slidesToShow: 1,
             infinite: true,
-            autoplay: false,
+            autoplay: true,
             autoplaySpeed: 5000,
             arrows: false,
             speed: 200,
             fade: true,
             cssEase: "linear",
             appendDots: $paginationItem,
-            // responsive: [
-            //     {
-            //         breakpoint: 480,
-            //         settings: {
-            //             dots: true,
-            //         }
-            //     }
-            // ]
         });
 
         $paginationItem.childNodes.forEach((item, index) => {
@@ -85,17 +77,6 @@ class CLIENTSLIDER {
                 this.addRemoveActive(currentSlide);
             }
         );
-        // this.sliderBottom = $("[data-pagination='client']").slick({
-        //     dots: false,
-        //     slidesToScroll: 2,
-        //     slidesToShow: 4,
-        //     infinite: false,
-        //     autoplay: false,
-        //     arrows: false,
-        //     speed: 200,
-        //     cssEase: "linear",
-        //     variableHeight:true,
-        // })
     }
     // remove and add active class into the dots.
     addRemoveActive(index = 0) {
@@ -106,8 +87,10 @@ class CLIENTSLIDER {
                 let activeImage = item.querySelector("[data-logo='active']");
                 let normalImage = item.querySelector("[data-logo='normal']");
                 item.classList.remove("active")
-                activeImage.style.display = 'none';
-                normalImage.style.display = 'block';
+                if(window.screen.width < 786){
+                    activeImage.style.display = 'none';
+                    normalImage.style.display = 'block';
+                }
             }
             );
         }
@@ -116,8 +99,10 @@ class CLIENTSLIDER {
             let activeImage = currentDot.querySelector("[data-logo='active']");
             let normalImage = currentDot.querySelector("[data-logo='normal']")
             currentDot.classList.add("active");
+            if(window.screen.width < 786){
             activeImage.style.display = 'block';
             normalImage.style.display = 'none';
+            }
         }
     }
 
