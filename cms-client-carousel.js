@@ -87,7 +87,7 @@ class CLIENTSLIDER {
                 let activeImage = item.querySelector("[data-logo='active']");
                 let normalImage = item.querySelector("[data-logo='normal']");
                 item.classList.remove("active")
-                if(window.screen.width < 786){
+                if(window.screen.width > 786){
                     activeImage.style.display = 'none';
                     normalImage.style.display = 'block';
                 }
@@ -99,7 +99,7 @@ class CLIENTSLIDER {
             let activeImage = currentDot.querySelector("[data-logo='active']");
             let normalImage = currentDot.querySelector("[data-logo='normal']")
             currentDot.classList.add("active");
-            if(window.screen.width < 786){
+            if(window.screen.width > 786){
             activeImage.style.display = 'block';
             normalImage.style.display = 'none';
             }
