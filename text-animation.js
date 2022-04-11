@@ -71,7 +71,7 @@ function navigationAnimation() {
     let mainNav = document.querySelector(".navigation-section");
     let navBtn = mainNav.querySelectorAll(".nav-toggle");
     let navMenu = mainNav.querySelector(".navbar-wrapper");
-    let links = navMenu.children;
+    let links = navMenu.querySelectorAll("[data-navbar='link']");
     let primaryCta = mainNav.querySelectorAll(".primary-cta.nav-cta")[1];
     // navTl.set(links, {opacity:0});
     navTl.paused(true);
