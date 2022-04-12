@@ -28,7 +28,11 @@ class TESTIMONIALSLIDER {
             arrows: true,
             prevArrow: this.prev,
             nextArrow: this.next,
-            appendDots: this.paginationWrapper
+            appendDots: this.paginationWrapper,
+            breakpoint: 480,
+            settings: {
+                arrows: false,
+            }
         });
         //get the length of the slider dots. 
         const sliderLength = this.slider.find(".slick-slide").length;
