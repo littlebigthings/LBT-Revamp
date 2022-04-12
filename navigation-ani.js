@@ -1,9 +1,8 @@
 function navigationAnimation() {
     let navTl = gsap.timeline({ defaults: { duration: 1, ease: 'back.out(1.7)' } });
     let mainNav = document.querySelector(".navigation-section");
+    if(mainNav == undefined || mainNav == null) return;
     let navBtn = mainNav.querySelectorAll(".nav-toggle");
-    
-    if(navMenu == undefined || navMenu == null) return;
     let navMenu = mainNav.querySelector(".navbar-wrapper");
     let links = navMenu.querySelectorAll("[data-navbar='link']");
     let primaryCta = mainNav.querySelectorAll(".primary-cta.nav-cta")[1];
