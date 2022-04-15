@@ -50,7 +50,7 @@ function animateProcess() {
                     timeline.from(item, {width:"0%", duration:0.5})
                     timeline.from(circle[index], {drawSVG:"0% 0%", duration:0.8},"-=0.5");
                     timeline.from(digit[index], {y:"10px", opacity:0, duration:0.5},"-=0.8");
-                    timeline.from(leftText[index], {x:`-${leftText[index].clientWidth}`, duration:1},"-=0.5")
+                    timeline.from(leftText[index], {y:`${leftText[index].clientHeight}`, duration:1},"-=0.5")
                     timeline.from(rect[index], {y:`${rect[index].clientHeight}`,},"-=1");
                     timeline.from(rightText[index], {y:`${rightText[index].clientHeight}`, duration:1},"-=0.9")
                 })
