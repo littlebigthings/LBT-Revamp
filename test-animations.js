@@ -66,6 +66,57 @@ function animateProcess() {
         })
     }
 }
+
+function animateShapes(){
+    let circle = document.querySelectorAll("[data-shape='circle']");
+    let square = document.querySelectorAll("[data-shape='square']");
+    let boxTop = document.querySelector("[data-box='top']");
+    let boxBtm = document.querySelector("[data-box='btm']");
+    let circleTop = document.querySelector("[data-circle='top']");
+    let circleBtm = document.querySelector("[data-circle='btm']");
+    let timeline = gsap.timeline({ defaults: { ease: "sine.out" } });
+    timeline.from(circle, {
+        rx:"16",
+        duration:2,
+        repeat:-1,
+        yoyo:true,
+        stagger:0.5,
+    })
+    timeline.from(square, {
+        rx:51.9,
+        duration:2,
+        repeat:-1,
+        yoyo:true,
+        stagger:0.5,
+    },"+=2")
+    timeline.from(boxTop, {
+        y:"60",
+        duration:2,
+        repeat:-1,
+        yoyo:true,
+    },"-=2")
+    timeline.from(boxBtm, {
+        x:"60",
+        duration:2,
+        repeat:-1,
+        yoyo:true,
+    },"-=2")
+    // timeline.to(circleTop, {
+    //     stroke:"#F288E0",
+    //     duration:2,
+    //     repeat:-1,
+    //     yoyo:true,
+    // },"-=2")
+    timeline.to(circleBtm, {
+        // stroke:"#3D278C",
+        x:"-18px",
+        y:"-40px",
+        duration:2,
+        repeat:-1,
+        yoyo:true,
+    },"-=2")
+}
 animateCircle();
 animateCards();
 animateProcess();
+animateShapes();
