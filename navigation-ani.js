@@ -33,6 +33,17 @@ function navigationAnimation() {
         })
     }
 
+    if(links.length > 0){
+        links.forEach((link, index) => {
+            if(index != 2){
+                link.addEventListener("click", ()=>{
+                    navTl.reverse(0.2);
+                    navBtn.forEach(btn => btn.setAttribute('isActive', false));
+                })
+            }
+        })
+    }
+
     if(window.screen.width < 768){
         primaryCta.style.marginTop = "4em"
         primaryCta.style.display = 'block';
