@@ -35,6 +35,23 @@ class CLIENTSLIDER {
     activateSlider() {
         const $paginationItem = document.querySelector("[data-pagination='client']");
         // initially it will add the hide class to all the image-col and content-col(except the first one.)
+        $("[data-carousel='client']").on('init', function(event, slick){
+            let imageComp = document.querySelectorAll(".portfolio-img-block");
+            let detailComp = document.querySelectorAll(".company-info-block");
+            if (imageComp.length > 0 && detailComp.length > 0) {
+                imageComp.forEach((item, index)=> {
+                    if(index == 0)return;
+                    gsap.set(item, {
+                        opacity: 0,
+                        y: '-10px',
+                    })
+                    gsap.set(detailComp[index], {
+                        opacity: 0,
+                        y: '-10px',
+                    })
+                })
+            }
+        });
         this.sliderTop = $("[data-carousel='client']").slick({
             dots: false,
             slidesToScroll: 1,
@@ -74,7 +91,43 @@ class CLIENTSLIDER {
         this.sliderTop.on(
             "afterChange",
             (event, slick, currentSlide, nextSlide) => {
+                let getActiveSlide = event.target.querySelector(".slick-active");
+                let imageComp = (getActiveSlide != undefined) && getActiveSlide.querySelector(".portfolio-img-block");
+                let detailComp = (getActiveSlide != undefined) && getActiveSlide.querySelector(".company-info-block");
+                if (imageComp != null && detailComp != null) {
+                    gsap.to(imageComp, {
+                        opacity: 1,
+                        y: '10px',
+                        duration: 0.4,
+                        ease: "linear",
+                    })
+                    gsap.to(detailComp, {
+                        opacity: 1,
+                        y: '10px',
+                        duration: 0.4,
+                        ease: "linear",
+                        delay: 0.2
+                    })
+                }
                 this.addRemoveActive(currentSlide);
+            }
+        );
+        this.sliderTop.on(
+            "beforeChange",
+            (event, slick, currentSlide, nextSlide) => {
+                let getActiveSlide = event.target.querySelector(".slick-active");
+                let imageComp = (getActiveSlide != undefined) && getActiveSlide.querySelector(".portfolio-img-block");
+                let detailComp = (getActiveSlide != undefined) && getActiveSlide.querySelector(".company-info-block");
+                if (imageComp != null && detailComp != null) {
+                    gsap.set(imageComp, {
+                        opacity: 0,
+                        y: '-10px',
+                    })
+                    gsap.set(detailComp, {
+                        opacity: 0,
+                        y: '-10px',
+                    })
+                }
             }
         );
     }
@@ -87,7 +140,7 @@ class CLIENTSLIDER {
                 let activeImage = item.querySelector("[data-logo='active']");
                 let normalImage = item.querySelector("[data-logo='normal']");
                 item.classList.remove("active")
-                if(window.screen.width > 786){
+                if (window.screen.width > 786) {
                     activeImage.style.display = 'none';
                     normalImage.style.display = 'block';
                 }
@@ -99,9 +152,9 @@ class CLIENTSLIDER {
             let activeImage = currentDot.querySelector("[data-logo='active']");
             let normalImage = currentDot.querySelector("[data-logo='normal']")
             currentDot.classList.add("active");
-            if(window.screen.width > 786){
-            activeImage.style.display = 'block';
-            normalImage.style.display = 'none';
+            if (window.screen.width > 786) {
+                activeImage.style.display = 'block';
+                normalImage.style.display = 'none';
             }
         }
     }
